@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sweet Cake Shop</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#fff5f8;
+    color:#44222d;
+}
+
+/* NAVBAR */
+
+nav{
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 7%;
+    box-shadow:0 3px 15px #ddd;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#e75480;
+}
+
+nav a{
+    text-decoration:none;
+    color:#44222d;
+    margin-left:25px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#e75480;
+}
+
+/* SLIDES */
+
+.slide{
+    min-height:calc(100vh - 70px);
+    padding:60px 8%;
+    display:none;
+}
+
+.slide.active{
+    display:block;
+}
+
+/* HOME */
+
+.home{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:linear-gradient(120deg,#ffe0eb,#fff8fa);
+}
+
+.home-text{
+    width:55%;
+}
+
+.home-text h1{
+    font-size:55px;
+    color:#d6336c;
+    margin-bottom:20px;
+}
+
+.home-text h1 span{
+    color:#8e44ad;
+}
+
+.home-text p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.big-cake{
+    font-size:200px;
+    animation:float 3s infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+/* BUTTON */
+
+.btn{
+    background:#e75480;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#8e44ad;
+}
+
+/* TITLES */
+
+.title{
+    text-align:center;
+    color:#d6336c;
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+    margin-bottom:40px;
+}
+
+/* CAKES */
+
+.cake-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px #ddd;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.cake{
+    font-size:90px;
+    background:#fff0f5;
+    border-radius:15px;
+    padding:20px;
+}
+
+.card h3{
+    color:#8e44ad;
+    margin:15px 0 8px;
+}
+
+.price{
+    color:#e75480;
+    font-size:20px;
+    font-weight:bold;
+    margin:15px;
+}
+
+/* BAKERY */
+
+.bakery{
+    background:#fff0f5;
+}
+
+.offer{
+    max-width:800px;
+    margin:20px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 20px #ddd;
+}
+
+.offer h2{
+    color:#d6336c;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.offer p{
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.items{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.item{
+    background:#ffe0eb;
+    padding:25px;
+    border-radius:15px;
+    min-width:150px;
+}
+
+.item span{
+    font-size:50px;
+}
+
+/* CONTACT */
+
+.contact{
+    background:linear-gradient(120deg,#ffe0eb,#f5e6ff);
+}
+
+.contact-box{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #ddd;
+}
+
+.contact-box input,
+.contact-box textarea{
+    width:100%;
+    padding:14px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+.contact-box textarea{
+    height:120px;
+}
+
+.contact-info{
+    text-align:center;
+    margin-top:25px;
+    line-height:2;
+}
+
+/* SLIDE BUTTONS */
+
+.slide-buttons{
+    text-align:center;
+    margin-top:30px;
+}
+
+.slide-buttons button{
+    border:none;
+    background:#e75480;
+    color:white;
+    padding:10px 18px;
+    border-radius:20px;
+    margin:5px;
+    cursor:pointer;
+}
+
+.slide-buttons button:hover{
+    background:#8e44ad;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    nav{
+        padding:0 4%;
+    }
+
+    nav a{
+        margin-left:8px;
+        font-size:13px;
+    }
+
+    .home{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .home-text{
+        width:100%;
+    }
+
+    .home-text h1{
+        font-size:38px;
+    }
+
+    .big-cake{
+        font-size:120px;
+        margin-top:30px;
+    }
+
+    .cake-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        🍰 Sweet Cakes
+    </div>
+
+    <div>
+        <a href="#" onclick="showSlide(1)">Home</a>
+        <a href="#" onclick="showSlide(2)">Cakes</a>
+        <a href="#" onclick="showSlide(3)">Bakery</a>
+        <a href="#" onclick="showSlide(4)">Contact</a>
+    </div>
+
+</nav>
+
+
+<!-- SLIDE 1 -->
+
+<section class="slide active home" id="slide1">
+
+    <div class="home-text">
+
+        <h1>
+            Sweet Moments<br>
+            Start With <span>Cake!</span> 🎂
+        </h1>
+
+        <p>
+            Welcome to Sweet Cakes!
+            We make delicious and beautiful cakes
+            for birthdays, weddings and every special moment.
+        </p>
+
+        <button class="btn" onclick="showSlide(2)">
+            View Our Cakes 🍰
+        </button>
+
+    </div>
+
+    <div class="big-cake">
+        🎂
+    </div>
+
+</section>
+
+
+<!-- SLIDE 2 -->
+
+<section class="slide" id="slide2">
+
+    <h1 class="title">
+        🎂 Our Special Cakes
+    </h1>
+
+    <p class="subtitle">
+        Freshly baked with love ❤️
+    </p>
+
+
+    <div class="cake-container">
+
+        <div class="card">
+
+            <div class="cake">
+                🍫
+            </div>
+
+            <h3>Chocolate Cake</h3>
+
+            <p>
+                Rich chocolate cake with
+                creamy chocolate frosting.
+            </p>
+
+            <div class="price">
+                ₹599
+            </div>
+
+            <button class="btn" onclick="order('Chocolate Cake')">
+                Order Now
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="cake">
+                🍓
+            </div>
+
+            <h3>Strawberry Cake</h3>
+
+            <p>
+                Fresh strawberry cake
+                with delicious cream.
+            </p>
+
+            <div class="price">
+                ₹699
+            </div>
+
+            <button class="btn" onclick="order('Strawberry Cake')">
+                Order Now
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="cake">
+                ❤️
+            </div>
+
+            <h3>Red Velvet</h3>
+
+            <p>
+                Soft red velvet cake
+                with cream cheese frosting.
+            </p>
+
+            <div class="price">
+                ₹799
+            </div>
+
+            <button class="btn" onclick="order('Red Velvet Cake')">
+                Order Now
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="slide-buttons">
+
+        <button onclick="showSlide(1)">
+            ← Home
+        </button>
+
+        <button onclick="showSlide(3)">
+            Next →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 3 -->
+
+<section class="slide bakery" id="slide3">
+
+    <h1 class="title">
+        🧁 Bakery & Special Offers
+    </h1>
+
+    <p class="subtitle">
+        Delicious treats for every occasion!
+    </p>
+
+
+    <div class="offer">
+
+        <h2>
+            🎉 Today's Special Offer 🎉
+        </h2>
+
+        <p>
+            Buy a birthday cake and get
+            <b>4 cupcakes FREE!</b>
+        </p>
+
+        <button class="btn" onclick="offerAlert()">
+            Grab Offer
+        </button>
+
+    </div>
+
+
+    <div class="items">
+
+        <div class="item">
+            <span>🧁</span>
+            <h3>Cupcake</h3>
+            <p>₹99</p>
+        </div>
+
+        <div class="item">
+            <span>🍪</span>
+            <h3>Cookies</h3>
+            <p>₹149</p>
+        </div>
+
+        <div class="item">
+            <span>🍩</span>
+            <h3>Donut</h3>
+            <p>₹89</p>
+        </div>
+
+        <div class="item">
+            <span>🥐</span>
+            <h3>Croissant</h3>
+            <p>₹129</p>
+        </div>
+
+    </div>
+
+
+    <div class="slide-buttons">
+
+        <button onclick="showSlide(2)">
+            ← Cakes
+        </button>
+
+        <button onclick="showSlide(4)">
+            Contact →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- SLIDE 4 -->
+
+<section class="slide contact" id="slide4">
+
+    <h1 class="title">
+        📞 Contact & Order
+    </h1>
+
+    <p class="subtitle">
+        Place your order today! 🎂
+    </p>
+
+
+    <div class="contact-box">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+        >
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+        >
+
+        <input
+            type="text"
+            id="cakeName"
+            placeholder="Cake You Want"
+        >
+
+        <textarea
+            id="message"
+            placeholder="Write your message..."
+        ></textarea>
+
+        <button
+            class="btn"
+            onclick="submitOrder()"
+        >
+            Place Order 🎂
+        </button>
+
+
+        <div class="contact-info">
+
+            📍 Hyderabad, Telangana<br>
+
+            📞 +91 98765 43210<br>
+
+            📧 sweetcakes@gmail.com
+
+        </div>
+
+    </div>
+
+
+    <div class="slide-buttons">
+
+        <button onclick="showSlide(3)">
+            ← Bakery
+        </button>
+
+        <button onclick="showSlide(1)">
+            Home 🏠
+        </button>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* SHOW SLIDES */
+
+function showSlide(number){
+
+    let slides =
+    document.querySelectorAll(".slide");
+
+    slides.forEach(function(slide){
+
+        slide.classList.remove("active");
+
+    });
+
+    document
+    .getElementById("slide" + number)
+    .classList.add("active");
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* ORDER CAKE */
+
+function order(cake){
+
+    alert(
+        "Great choice! 🎂\n\n" +
+        cake +
+        " selected.\n\n" +
+        "Please go to Contact & Order to place your order."
+    );
+
+    showSlide(4);
+
+    document.getElementById("cakeName").value = cake;
+
+}
+
+
+/* SPECIAL OFFER */
+
+function offerAlert(){
+
+    alert(
+        "🎉 Special Offer! 🎉\n\n" +
+        "Buy any birthday cake and get 4 cupcakes FREE!"
+    );
+
+}
+
+
+/* SUBMIT ORDER */
+
+function submitOrder(){
+
+    let name =
+    document.getElementById("name").value;
+
+    let phone =
+    document.getElementById("phone").value;
+
+    let cake =
+    document.getElementById("cakeName").value;
+
+
+    if(name === "" ||
+       phone === "" ||
+       cake === ""){
+
+        alert(
+            "Please fill Name, Phone Number and Cake Name. 😊"
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "🎉 Order Successfully Placed! 🎉\n\n" +
+        "Thank you " + name + "!\n" +
+        "Cake: " + cake + "\n\n" +
+        "We will contact you soon."
+    );
+
+
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("cakeName").value = "";
+    document.getElementById("message").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
